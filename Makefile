@@ -1,6 +1,7 @@
 # bcmdhd
 #
 # Portions of this code are copyright (c) 2023 Cypress Semiconductor Corporation
+# Portions of this code are copyright (c) 2024 Thomas Makin
 #
 # Copyright (C) 1999-2018, Broadcom Corporation
 #
@@ -27,7 +28,7 @@
 #
 
 #####################
-# SDIO Basic feature
+# Basic features
 #####################
 
 DHDCFLAGS += -Wall -Wstrict-prototypes -Dlinux -DLINUX -DBCMDRIVER            \
@@ -39,7 +40,8 @@ DHDCFLAGS += -Wall -Wstrict-prototypes -Dlinux -DLINUX -DBCMDRIVER            \
 	-DGET_CUSTOM_MAC_ENABLE      \
 	-DSEC_ENHANCEMENT -DDHD_FW_COREDUMP -DCHIPS_CUSTOMER_HW6	\
 	-DDHD_RND_DEBUG -DDHD_DUMP_FILE_WRITE_FROM_KERNEL		\
-	-DDHD_DONOT_FORWARD_BCMEVENT_AS_NETWORK_PKT
+	-DDHD_DONOT_FORWARD_BCMEVENT_AS_NETWORK_PKT -DCONFIG_DTS \
+	-DDHD_USE_SINGLE_NVRAM_FILE -DDHD_BLOB_EXISTENCE_CHECK
 
 GCCVERSIONGTEQ9 := $(shell expr `$(CROSS_COMPILE)gcc -dumpversion | cut -f1 -d.` \>= 9)
 ifeq "$(GCCVERSIONGTEQ9)" "1"
